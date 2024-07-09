@@ -25,7 +25,7 @@ onMounted(getUserBlogs);
 
 const selectBlog = (id: string): void => {
   blogId.value = id;
-  navigateTo('/blog/posts')
+  navigateTo('/articles')
 }
 </script>
 

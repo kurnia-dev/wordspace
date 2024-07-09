@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Button from "primevue/button";
 import type { BlogPost, GetBlogPostsResponse } from "~/types/blogpost.type";
 
 const posts = ref<BlogPost[]>([]);
@@ -24,11 +25,12 @@ const getBlogPosts = async () => {
 onMounted(getBlogPosts);
 
 const editPost = (postId: string): void => {
-  navigateTo(`/posts/edit/${postId}`);
+  navigateTo(`/articles/update/${postId}`);
 };
 </script>
 
 <template>
+  <Button label="New Article" @click="navigateTo('/articles/write')" />
   <ul>
     <li v-for="post in posts" :key="post.id" @click="editPost(post.id)">
       {{ post.title }}
