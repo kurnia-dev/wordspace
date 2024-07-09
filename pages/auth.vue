@@ -1,11 +1,3 @@
-<script setup lang="ts">
-const user_token = useCookie("access_token");
-
-onBeforeMount(() => {
-  if (user_token.value) navigateTo("/spaces");
-});
-</script>
-
 <template>
   <div class="login-app-wrapper w-screen h-screen bg-bice_blue-900/15">
     <div
