@@ -3,6 +3,7 @@ const access_token = useCookie("access_token");
 
 const onSuccess = async (res: { authuser?: string; access_token: string }) => {
   access_token.value = res.access_token;
+  navigateTo('spaces');
 };
 
 const { login } = useTokenClient({
