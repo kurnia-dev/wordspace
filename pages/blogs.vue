@@ -2,7 +2,7 @@
 import type { Blog, GetUserBlogsResponse } from "~/types/blogger.type";
 
 const blogList = ref<Blog[]>([]);
-
+const blogId = useCookie('blogId');
 const getUserBlogs = async () => {
   try {
     const { data } = await useFetch<GetUserBlogsResponse>(
@@ -22,10 +22,15 @@ const getUserBlogs = async () => {
 };
 
 onMounted(getUserBlogs);
+
+const selectBlog = (id: string): void => {
+  blogId.value = id;
+  navigateTo('/blog/posts')
+}
 </script>
 
 <template>
   <ul>
-    <li v-for="blog in blogList" :key="blog.id">{{ blog.name }}</li>
+    <li v-for="blog in blogList" :key="blog.id" @click="selectBlog(blog.id)">{{ blog.name }}</li>
   </ul>
 </template>
